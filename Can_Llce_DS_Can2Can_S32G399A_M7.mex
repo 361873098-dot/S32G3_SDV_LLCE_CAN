@@ -1212,6 +1212,8 @@
                <struct name="gmac_generation">
                   <setting>
                      <setting name="adkp_file" value="N/A"/>
+                     <setting name="key_type" value="Plain ADKP"/>
+                     <setting name="random_gmac_iv" value="true"/>
                   </setting>
                   <arrays/>
                   <child_structs/>
@@ -1238,14 +1240,14 @@
                   <child_structs>
                      <struct name="sys_img_pointer">
                         <setting>
-                           <setting name="sys_img_pointer_addr" value="0x81000"/>
+                           <setting name="sys_img_pointer_addr" value="0x81000" reserved="true"/>
                         </setting>
                         <arrays/>
                         <child_structs/>
                      </struct>
                      <struct name="sys_img_pointer_backup">
                         <setting>
-                           <setting name="sys_img_pointer_backup_addr" value="0x8d000"/>
+                           <setting name="sys_img_pointer_backup_addr" value="0x8d000" reserved="true"/>
                         </setting>
                         <arrays/>
                         <child_structs/>
@@ -1373,7 +1375,7 @@
             <processor_version>N/A</processor_version>
          </gtm_profile>
       </gtm>
-      <periphs name="Peripherals" version="14.0" enabled="true" update_project_code="false">
+      <periphs name="Peripherals" version="14.0" enabled="true" update_project_code="true">
          <dependencies>
             <dependency resourceType="SWComponent" resourceId="platform.driver.dem" description="工具链/IDE工程中未找到Dem。工程不会被编译！" problem_level="2" source="Peripherals">
                <feature name="enabled" evaluation="equal">
@@ -1481,97 +1483,7 @@
                </feature>
             </dependency>
          </dependencies>
-         <generated_project_files>
-            <file path="generate/include/CDD_Rm_Cfg.h" update_enabled="true"/>
-            <file path="generate/include/CDD_Rm_Ipw_Cfg.h" update_enabled="true"/>
-            <file path="generate/include/CDD_Rm_Ipw_VS_0_PBcfg.h" update_enabled="true"/>
-            <file path="generate/include/CDD_Rm_Ipw_VS_HEADLESS_PBcfg.h" update_enabled="true"/>
-            <file path="generate/include/CDD_Rm_VS_0_PBcfg.h" update_enabled="true"/>
-            <file path="generate/include/CDD_Rm_VS_HEADLESS_PBcfg.h" update_enabled="true"/>
-            <file path="generate/include/Can_43_LLCE_AFcfg.h" update_enabled="true"/>
-            <file path="generate/include/Can_43_LLCE_Cfg.h" update_enabled="true"/>
-            <file path="generate/include/Can_43_LLCE_Externals.h" update_enabled="true"/>
-            <file path="generate/include/Can_43_LLCE_VS_0_PBcfg.h" update_enabled="true"/>
-            <file path="generate/include/Can_43_LLCE_VS_HEADLESS_PBcfg.h" update_enabled="true"/>
-            <file path="generate/include/Clock_Ip_Cfg.h" update_enabled="true"/>
-            <file path="generate/include/Clock_Ip_Cfg_Defines.h" update_enabled="true"/>
-            <file path="generate/include/Clock_Ip_VS_0_PBcfg.h" update_enabled="true"/>
-            <file path="generate/include/Clock_Ip_VS_HEADLESS_PBcfg.h" update_enabled="true"/>
-            <file path="generate/include/Dem_IntErrId.h" update_enabled="true"/>
-            <file path="generate/include/EcuM_Cfg.h" update_enabled="true"/>
-            <file path="generate/include/IntCtrl_Ip_Cfg.h" update_enabled="true"/>
-            <file path="generate/include/IntCtrl_Ip_CfgDefines.h" update_enabled="true"/>
-            <file path="generate/include/Mcu_Cfg.h" update_enabled="true"/>
-            <file path="generate/include/Mcu_Ipw_Cfg_Defines.h" update_enabled="true"/>
-            <file path="generate/include/Mcu_VS_0_PBcfg.h" update_enabled="true"/>
-            <file path="generate/include/Mcu_VS_HEADLESS_PBcfg.h" update_enabled="true"/>
-            <file path="generate/include/Mpu_M7_Ip_Cfg.h" update_enabled="true"/>
-            <file path="generate/include/Mpu_M7_Ip_Cfg_Defines.h" update_enabled="true"/>
-            <file path="generate/include/Mscm_Ip_Cfg.h" update_enabled="true"/>
-            <file path="generate/include/Mscm_Ip_Cfg_Defines.h" update_enabled="true"/>
-            <file path="generate/include/Mscm_Ip_VS_0_PBcfg.h" update_enabled="true"/>
-            <file path="generate/include/Mscm_Ip_VS_HEADLESS_PBcfg.h" update_enabled="true"/>
-            <file path="generate/include/OsIf_ArchCfg.h" update_enabled="true"/>
-            <file path="generate/include/OsIf_Cfg.h" update_enabled="true"/>
-            <file path="generate/include/Os_cfg.h" update_enabled="true"/>
-            <file path="generate/include/PlatformTypes.h" update_enabled="true"/>
-            <file path="generate/include/Platform_Cfg.h" update_enabled="true"/>
-            <file path="generate/include/Platform_CfgDefines.h" update_enabled="true"/>
-            <file path="generate/include/Platform_Ipw_Cfg.h" update_enabled="true"/>
-            <file path="generate/include/Power_Ip_Cfg.h" update_enabled="true"/>
-            <file path="generate/include/Power_Ip_Cfg_Defines.h" update_enabled="true"/>
-            <file path="generate/include/Power_Ip_VS_0_PBcfg.h" update_enabled="true"/>
-            <file path="generate/include/Power_Ip_VS_HEADLESS_PBcfg.h" update_enabled="true"/>
-            <file path="generate/include/Ram_Ip_Cfg.h" update_enabled="true"/>
-            <file path="generate/include/Ram_Ip_Cfg_Defines.h" update_enabled="true"/>
-            <file path="generate/include/Ram_Ip_VS_0_PBcfg.h" update_enabled="true"/>
-            <file path="generate/include/Ram_Ip_VS_HEADLESS_PBcfg.h" update_enabled="true"/>
-            <file path="generate/include/Sema42_Ip_Cfg_Defines.h" update_enabled="true"/>
-            <file path="generate/include/Siul2_Port_Ip_Defines.h" update_enabled="true"/>
-            <file path="generate/include/Siul2_Port_Ip_UnusedPin.h" update_enabled="true"/>
-            <file path="generate/include/Soc_Ips.h" update_enabled="true"/>
-            <file path="generate/include/System_Ip_Cfg.h" update_enabled="true"/>
-            <file path="generate/include/System_Ip_CfgDefines.h" update_enabled="true"/>
-            <file path="generate/include/Xrdc_Ip_Cfg.h" update_enabled="true"/>
-            <file path="generate/include/Xrdc_Ip_Cfg_Defines.h" update_enabled="true"/>
-            <file path="generate/include/Xrdc_Ip_VS_0_PBcfg.h" update_enabled="true"/>
-            <file path="generate/include/Xrdc_Ip_VS_HEADLESS_PBcfg.h" update_enabled="true"/>
-            <file path="generate/include/modules.h" update_enabled="true"/>
-            <file path="generate/include/report.html" update_enabled="true"/>
-            <file path="generate/src/CDD_Rm_Cfg.c" update_enabled="true"/>
-            <file path="generate/src/CDD_Rm_Ipw_VS_0_PBcfg.c" update_enabled="true"/>
-            <file path="generate/src/CDD_Rm_Ipw_VS_HEADLESS_PBcfg.c" update_enabled="true"/>
-            <file path="generate/src/CDD_Rm_VS_0_PBcfg.c" update_enabled="true"/>
-            <file path="generate/src/CDD_Rm_VS_HEADLESS_PBcfg.c" update_enabled="true"/>
-            <file path="generate/src/Can_43_LLCE_AFcfg.c" update_enabled="true"/>
-            <file path="generate/src/Can_43_LLCE_Cfg.c" update_enabled="true"/>
-            <file path="generate/src/Can_43_LLCE_Headless_Ip_VS_HEADLESS_PBcfg.c" update_enabled="true"/>
-            <file path="generate/src/Can_43_LLCE_VS_0_PBcfg.c" update_enabled="true"/>
-            <file path="generate/src/Can_43_LLCE_VS_HEADLESS_PBcfg.c" update_enabled="true"/>
-            <file path="generate/src/Clock_Ip_Cfg.c" update_enabled="true"/>
-            <file path="generate/src/Clock_Ip_VS_0_PBcfg.c" update_enabled="true"/>
-            <file path="generate/src/Clock_Ip_VS_HEADLESS_PBcfg.c" update_enabled="true"/>
-            <file path="generate/src/IntCtrl_Ip_Cfg.c" update_enabled="true"/>
-            <file path="generate/src/Mcu_Cfg.c" update_enabled="true"/>
-            <file path="generate/src/Mcu_VS_0_PBcfg.c" update_enabled="true"/>
-            <file path="generate/src/Mcu_VS_HEADLESS_PBcfg.c" update_enabled="true"/>
-            <file path="generate/src/Mpu_M7_Ip_Cfg.c" update_enabled="true"/>
-            <file path="generate/src/Mscm_Ip_VS_0_PBcfg.c" update_enabled="true"/>
-            <file path="generate/src/Mscm_Ip_VS_HEADLESS_PBcfg.c" update_enabled="true"/>
-            <file path="generate/src/OsIf_Cfg.c" update_enabled="true"/>
-            <file path="generate/src/Platform_Cfg.c" update_enabled="true"/>
-            <file path="generate/src/Platform_Ipw_Cfg.c" update_enabled="true"/>
-            <file path="generate/src/Power_Ip_Cfg.c" update_enabled="true"/>
-            <file path="generate/src/Power_Ip_VS_0_PBcfg.c" update_enabled="true"/>
-            <file path="generate/src/Power_Ip_VS_HEADLESS_PBcfg.c" update_enabled="true"/>
-            <file path="generate/src/Ram_Ip_Cfg.c" update_enabled="true"/>
-            <file path="generate/src/Ram_Ip_VS_0_PBcfg.c" update_enabled="true"/>
-            <file path="generate/src/Ram_Ip_VS_HEADLESS_PBcfg.c" update_enabled="true"/>
-            <file path="generate/src/Siul2_Port_Ip_UnusedPin.c" update_enabled="true"/>
-            <file path="generate/src/Xrdc_Ip_Cfg.c" update_enabled="true"/>
-            <file path="generate/src/Xrdc_Ip_VS_0_PBcfg.c" update_enabled="true"/>
-            <file path="generate/src/Xrdc_Ip_VS_HEADLESS_PBcfg.c" update_enabled="true"/>
-         </generated_project_files>
+         <generated_project_files/>
          <peripherals_profile>
             <processor_version>0.0.0</processor_version>
          </peripherals_profile>

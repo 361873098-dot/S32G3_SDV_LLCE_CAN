@@ -428,7 +428,7 @@
 		<COND_TOOLCHAIN_CUSTOM_OPTION/>
 	</storageModule>
 	<storageModule moduleId="com.nxp.s32ds.cle.uct.internal.core.toolchainScriptProfile">
-		<COND_TOOLCHAIN_COMPONENTS_OPTION>COPY=platform.driver.dem;platform.driver.Platform;platform.driver.clock;platform.driver.ecum;platform.driver.osif;platform.driver.mcu;platform.driver.os;platform.driver.siul2_port;platform.driver.CanIf;platform.driver.Can_43_LLCE;platform.driver.Rm</COND_TOOLCHAIN_COMPONENTS_OPTION>
+		<COND_TOOLCHAIN_COMPONENTS_OPTION/>
 	</storageModule>
 	<storageModule moduleId="com.nxp.s32ds.cle.uct.core">
 		<sdkComponents>platform.driver.dem;platform.driver.rte_dem;platform.driver.Platform;platform.driver.det;platform.driver.clock;platform.driver.rte_mcu;platform.driver.ecum;platform.driver.osif;platform.driver.mcu;platform.driver.os;platform.driver.rte_os;platform.driver.siul2_port;platform.driver.rte_port;platform.driver.CanIf;platform.driver.Can_43_LLCE;platform.driver.rte_can_43_llce;platform.driver.Rm;platform.driver.rte_rm</sdkComponents>
