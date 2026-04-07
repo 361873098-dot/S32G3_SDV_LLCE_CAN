@@ -1,0 +1,85 @@
+*   Copyright 2020-2024 NXP
+*
+*   NXP Confidential. This software is owned or controlled by NXP and may only be
+*   used strictly in accordance with the applicable license terms. By expressly
+*   accepting such terms or by downloading, installing, activating and/or otherwise
+*   using the software, you are agreeing that you have read, and that you agree to
+*   comply with and are bound by, such license terms. If you do not agree to be
+*   bound by the applicable license terms, then you may not retain, install,
+*   activate or otherwise use the software.
+
+1. Example Description
+        This is a simple application to show the internal routing functionality of CAN_LLCE Driver.
+        
+    1.1 The application software functionality
+            This is an example for 	CAN2CAN routing:
+            This demo does internal simple routing, routing with changing frame from Can to CanFD, routing with changing frame from 
+            CanFD to Can, routing with Can Id remapping.
+            For a visual representation of this demo, check the Readme.pdf in the sample_app_llce folder. 
+2. Installation steps
+    2.1 Hardware installation
+        2.1.1 Supported boards
+            - S32G-VNP-RDB3 (SCH-53060, Rev E1)
+            No special wiring connections are needed for this example.
+        2.2.3 Debugger
+            The debugger must be connected to 20-pin JTAG for S32G Debug connector.
+    2.2 Software installation
+        2.2.1 Importing the S32 Design Studio project
+            After opening S32 Design Studio, go to "File -> New -> S32DS Project From Example" and select this example. Then click on "Finish".
+            The project should now be copied into you current workspace.
+
+       
+3. Generating, building and running the example application
+    3.1 Generating the S32 configuration
+        Before running the example a configuration needs to be generated.  First go to Project Explorer View in S32 DS and select the current project. 
+        Important!: Click on C/C++ menu, expand the demo project and search for LLCE_BIN_DIR variable. This points to the LLCE blob in the default installer location of LLCE release package (E.g: C:/NXP/S32G_LLCE_GATEWAY_1_0_4_D2204/firmware/llce_bin/s32g3/bin/[ghs]/enablement)
+        If it is empty, it means that you must edit the path of LLCE_BIN_DIR variable to your custom installing location. Click on Project -> Properties -> Resource -> Linked Resources -> LLCE_BIN_DIR -> Edit and search for the LLCE blob location. 
+
+        Select the "S32 Configuration Tool" menu then click on the desired configuration tool (Pins, Clocks, Peripherals etc...). Clicking on any one of those will generate all the components. 
+        Make the desired changes(if any) then click on the "S32 Configuration Tool->Update Code" button.
+        
+        ! Note : For Can_Llce_DS_Can2Can_S32G274A_M7 and Can_Llce_DS_Can2Can_S32G399A_M7 projects, the file "Can_43_LLCE_Headless_Ip_VS_HEADLESS_PBcfg.c" has to be manually removed from compilation when headless mode isn't used.
+        One can do so by navigating to Build path -> Remove from -> Debug_RAM.
+
+        3.1.1  Steps for generating headless_mode :
+        1) If not enabled in the "HEADLESS" variant, enable the two checkboxes, "Enable Headless Mode" and "Headless Mode Used".
+        2) Right-click on the project name and go to Properties->C/C++ Build, click on "Manage Configurations", select "can_routing_headless" and click on "Set Active".
+        3) Right-click on the project name and go to Properties->C/C++ Build->Settings and set the "CONFIG_VARIANT_USED=VS_Headless" symbol(it is set to "CONFIG_VARIANT_USED=VS_0" by default).
+        4) Select "can_routing_headless" debug config and check that the "LLCE_INTERFACE_LOCATION" variable located at Properties->Environment contains a valid path to the interface.
+    3.2 Compiling the application
+        Select the configuration to be built: RAM (Debug_RAM) by left clicking on the downward arrow corresponding to the build button in eclipse. 
+        Use Project > Build to build the project.
+        Wait for the build action to be completed before continuing to the next step. Check the compiler console for error messages; upon completion, the *.elf binary file
+        should be created.
+    3.2 Running the application on the board
+        Go to Run and select Debug Configurations/S32 Debugger. There will be a debug configuration for this project:
+        
+        Configuration Name                                               Description
+        -------------------------------                                  -----------------------
+        Can_Llce_DS_Can2Can_S32G399A_M7                         Debug the RAM configuration using S32Debugger
+        
+        Select the desired debug configuration and click on Launch. Now the perspective will change to the Debug Perspective.
+        Use the controls to control the program flow.
+
+4. Troubleshooting: 
+    4.1 Loading .mex file
+    The eventual errors issued by S32DS are not straightforward to diagnose. One of them that may appear when the project is selected in Peripherals menu is this:
+    "Error during opening configuration Can_Llce_[abc].mex. Processor [x], PlatformSDK_[y] version is not supported by the current version of the tool."
+    This is caused by an incompatibility between LLCE update site and RTD update site version regarding the Platform SDK name which must match. 
+    The Release Notes of the LLCE package specifies which RTD release version must be used for the correct integration of the update_site.
+    
+    4.2 Compilation errors 1
+    Possible compilation errors might be generated by wrong/missing plugins versions from your local RTD plugins. 
+    In C/C++ menu, go to Project Explorer and expand the demo project. Under "Includes", make sure there is no grayed out path. 
+
+    4.3 Compilation errors 2 
+    If the compilation complains about missing [dte/frpe/ppe_rx/ppe_tx].c file, make sure the LLCE_BIN_DIR contains the forehead mentioned files. 
+    Otherwise, check the 3.1 subchapter.
+
+    4.4 Compilation errors 3
+    If the compilation complains about missing configuration files, make sure you hit the Update Code button under Peripherals view and 
+    'Update Code enabled' is checked under Peripherals/Generated code.
+
+    4.5 Compilation errors 4
+    If the compilation complains about duplicated symbols, make sure the configurations tool (e.g Clocks) do not interfere with the loaded plugins.
+    For example, if MCU plugin is loaded into the project, the Clocks tool shall keep 'Update code' disabled under Clocks/Overview/Generated Code.
